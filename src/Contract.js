@@ -7,7 +7,7 @@ const { BigNumber } = require('bignumber.js');
 
 const { Contract, providers } = ethers;
 
-const contractAddress = '0x4AD5D5661160d9Feeb13973cE2bdA32B584eaBfE';
+const contractAddress = '0x61c2FDb9AB14eEBe63ee8c6cf668e233864576A1';
 const contractABI = [{"inputs":[],"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"CoinFlipRequest","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"bool","name":"didWin","type":"bool"}],"name":"CoinFlipResult","type":"event"},{"inputs":[{"internalType":"enum CoinFlipx.CoinFlipSelection","name":"choice","type":"uint8"}],"name":"flip","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"getStatus","outputs":[{"components":[{"internalType":"uint256","name":"fees","type":"uint256"},{"internalType":"uint256","name":"randomword","type":"uint256"},{"internalType":"address","name":"player","type":"address"},{"internalType":"bool","name":"didWin","type":"bool"},{"internalType":"bool","name":"fulfilled","type":"bool"},{"internalType":"enum CoinFlipx.CoinFlipSelection","name":"choice","type":"uint8"},{"internalType":"uint256","name":"additionalAmount","type":"uint256"}],"internalType":"struct CoinFlipx.CoinFlipStatus","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maximumBettingAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_requestId","type":"uint256"},{"internalType":"uint256[]","name":"_randomWords","type":"uint256[]"}],"name":"rawFulfillRandomWords","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxAmount","type":"uint256"}],"name":"setMaxBettingAmount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"statuses","outputs":[{"internalType":"uint256","name":"fees","type":"uint256"},{"internalType":"uint256","name":"randomword","type":"uint256"},{"internalType":"address","name":"player","type":"address"},{"internalType":"bool","name":"didWin","type":"bool"},{"internalType":"bool","name":"fulfilled","type":"bool"},{"internalType":"enum CoinFlipx.CoinFlipSelection","name":"choice","type":"uint8"},{"internalType":"uint256","name":"additionalAmount","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"payable","type":"function"}]
 
 let provider;
@@ -23,8 +23,8 @@ function sleep(ms) {
   return new Promise(resolveFunc => setTimeout(resolveFunc, ms));
 }
 
-const customRPC = 'https://rpc.testnet.fantom.network'; // Fantom testnet RPC endpoint
-const chainId = 4002; // Chain ID of the Fantom testnet (Fantom Opera)
+const customRPC = 'https://rpc.fantom.network'; // Fantom testnet RPC endpoint
+const chainId = 250; // Chain ID of the Fantom testnet (Fantom Opera)
 
 export async function connectAndInitialize() {
   try {
