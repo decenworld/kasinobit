@@ -6,8 +6,8 @@ import tailsImage from './assets/img/heads.webp';
 
 const { ethers } = require('ethers');
 
-const contractAddress = '0x764f842cbe1a3721d93cc017816c7f3acc9f2ec4';
-const contractABI = [{"inputs":[],"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"CoinFlipRequest","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"bool","name":"didWin","type":"bool"}],"name":"CoinFlipResult","type":"event"},{"inputs":[{"internalType":"enum CoinFlip.CoinFlipSelection","name":"choice","type":"uint8"}],"name":"flip","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"getStatus","outputs":[{"components":[{"internalType":"uint256","name":"fees","type":"uint256"},{"internalType":"uint256","name":"randomword","type":"uint256"},{"internalType":"address","name":"player","type":"address"},{"internalType":"bool","name":"didWin","type":"bool"},{"internalType":"bool","name":"fulfilled","type":"bool"},{"internalType":"enum CoinFlip.CoinFlipSelection","name":"choice","type":"uint8"}],"internalType":"struct CoinFlip.CoinFlipStatus","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"statuses","outputs":[{"internalType":"uint256","name":"fees","type":"uint256"},{"internalType":"uint256","name":"randomword","type":"uint256"},{"internalType":"address","name":"player","type":"address"},{"internalType":"bool","name":"didWin","type":"bool"},{"internalType":"bool","name":"fulfilled","type":"bool"},{"internalType":"enum CoinFlip.CoinFlipSelection","name":"choice","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"payable","type":"function"}];
+const contractAddress = '0x61c2FDb9AB14eEBe63ee8c6cf668e233864576A1';
+const contractABI = [{"inputs":[],"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"CoinFlipRequest","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"requestId","type":"uint256"},{"indexed":false,"internalType":"bool","name":"didWin","type":"bool"}],"name":"CoinFlipResult","type":"event"},{"inputs":[{"internalType":"enum CoinFlipx.CoinFlipSelection","name":"choice","type":"uint8"}],"name":"flip","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"requestId","type":"uint256"}],"name":"getStatus","outputs":[{"components":[{"internalType":"uint256","name":"fees","type":"uint256"},{"internalType":"uint256","name":"randomword","type":"uint256"},{"internalType":"address","name":"player","type":"address"},{"internalType":"bool","name":"didWin","type":"bool"},{"internalType":"bool","name":"fulfilled","type":"bool"},{"internalType":"enum CoinFlipx.CoinFlipSelection","name":"choice","type":"uint8"},{"internalType":"uint256","name":"additionalAmount","type":"uint256"}],"internalType":"struct CoinFlipx.CoinFlipStatus","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maximumBettingAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_requestId","type":"uint256"},{"internalType":"uint256[]","name":"_randomWords","type":"uint256[]"}],"name":"rawFulfillRandomWords","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxAmount","type":"uint256"}],"name":"setMaxBettingAmount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"statuses","outputs":[{"internalType":"uint256","name":"fees","type":"uint256"},{"internalType":"uint256","name":"randomword","type":"uint256"},{"internalType":"address","name":"player","type":"address"},{"internalType":"bool","name":"didWin","type":"bool"},{"internalType":"bool","name":"fulfilled","type":"bool"},{"internalType":"enum CoinFlipx.CoinFlipSelection","name":"choice","type":"uint8"},{"internalType":"uint256","name":"additionalAmount","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"payable","type":"function"}];
 
 function sleep(ms) {
   return new Promise(resolveFunc => setTimeout(resolveFunc, ms));
@@ -49,7 +49,7 @@ export async function getEventLogs(provider, contractAddress, contractABI) {
       } else if (outcome === 1) {
         return 'You won';
       } else {
-        return 'Invalid outcome';
+        return 'You lost'; // invalid outcome
       }
     } else {
       return 'No event logs found.';
@@ -285,6 +285,9 @@ Simply type in your wager amount and flip the coin!
 }
 .second {
    display: inline-block;
+}
+.outcome-container{
+  color: white;
 }
 
         .Middle_Container {
