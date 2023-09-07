@@ -70,11 +70,11 @@ const CoinFlipForm = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [flipCount, setFlipCount] = useState(0);
   const [finalFace, setFinalFace] = useState(null);
-  const [profit, setProfit] = useState('1.97'); // Default profit is '1.97'
+  const [profit, setProfit] = useState('0.96'); // Default profit is '1.97'
   const [outcome, setOutcome] = useState(null);
   const [outcomeLoaded, setOutcomeLoaded] = useState(false); // Add this line
   const [isWalletConnected, setIsWalletConnected] = useState(false); // Wallet connection status
-  const customRPC = 'https://rpc.testnet.fantom.network'; // Fantom testnet RPC endpoint
+  const customRPC = 'https://rpc.fantom.network'; // Fantom testnet RPC endpoint
 
 
   useEffect(() => {
