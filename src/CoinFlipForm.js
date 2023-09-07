@@ -27,7 +27,7 @@ export async function getEventLogs(provider, contractAddress, contractABI) {
         await sleep(8000);
     const logs = await provider.getLogs({
       address: contractAddress,
-      fromBlock: 0, // Replace with the starting block number
+      fromBlock: 67937161, // Replace with the starting block number
       toBlock: 'latest',
       topics: filter.topics,
     });
